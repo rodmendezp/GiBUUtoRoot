@@ -7,6 +7,7 @@
 #include "TString.h"
 #include "TH1.h"
 #include "TMath.h"
+#include "TVector3.h"
 
 TString fName;
 TString Metal;
@@ -18,7 +19,9 @@ Float_t kMassPi = 0.139570;
 Float_t kEbeam = 5.0;
 
 void MomElectron(Float_t &pex, Float_t &pey, Float_t &pez, Float_t q2, Float_t nu, Float_t phie);
-void MomPhoton(Float_t &pfx, Float_t &pfy, Float_t &pfz, Float_t pex, Float_t pey, Float_t pez);
+void MomPhoton(Float_t &pfx, Float_t &pfy, Float_t &pfz, Float_t pex, Float_t pey, Float_t pez, Float_t nu);
+Float_t ThetaPQ(Float_t pfx, Float_t pfy, Float_t pfz, Float_t px, Float_t py, Float_t pz);
+Float_t PhiPQ(Float_t pfx, Float_t pfy, Float_t pfz, Float_t px, Float_t py, Float_t pz);
 
 int main(int argc,  char **argv){
 	rootfName = "part.root";
@@ -116,17 +119,9 @@ int main(int argc,  char **argv){
 				w[i] = TMath::Sqrt(kMassP * kMassP + 2 * kMassP * nu - q2); // Check
 				plcm[i] = (nu + kMassP) * (TMath::Sqrt(1.) - TMath::Sqrt(q2 + nu * nu) * zh[i] * nu / (nu + kMassP)) / w[i];
 				MomElectron(pex, pey, pez, q2, nu, phiL);
-				Float_t petot;
-				petot = TMath::Sqrt(pex*pex+pey*pey+pez*pez);
-				std::cout << "Momentum Scattered Electron = " << petot << std::endl;
-				std::cout << "Energy of the photon = " << nu << std::endl;
-				MomPhoton(pfx, pfy, pfz, pex, pey, pez);
-				Float_t pftot;
-				pftot = TMath::Sqrt(pfx*pfx+pfy*pfy+pfz*pfz);
-				//std::cout << "Momentum Virtual Photon = " << pftot << std::endl;
-				//std::cout << "Sum of Momemtums = " << pftot + petot << std::endl;
-				theta[i] = 1.;
-				phi[i] = 1.;
+				MomPhoton(pfx, pfy, pfz, pex, pey, pez, nu);
+				theta[i] = ThetaPQ(pfx,  pfy,  pfz,  p[i],  p[i],  p[i]);
+				phi[i] = PhiPQ(pfx,  pfy,  pfz,  p[i],  p[i],  p[i]);
 				zh[i] = e[i]/nu; // Check
 				pt[i] = TMath::Sqrt(p[i]*p[i]*(1 - TMath::Cos(theta[i])*TMath::Cos(theta[i]))); // Check
 				w2p[i] = 1.;
@@ -151,8 +146,6 @@ int main(int argc,  char **argv){
 			delete[] p;
 			delete[] t4;
 			delete[] betta;
-			//std::cout << tLine << "\t" << nu << "\t" << q2 << "\t" << eps << "\t" << phiL << "\t" << eventType << std::endl;
-			//ntuple_elec->Fill(1., q2, nu,)
 		}
 	}
 	
@@ -174,15 +167,40 @@ void MomElectron(Float_t &pex, Float_t &pey, Float_t &pez, Float_t q2, Float_t n
 	pexy = (kEbeam - nu)*TMath::Sqrt(1 - costheta*costheta);
 	pex = pexy*TMath::Cos(phi);
 	pey = pexy*TMath::Sin(phi);
+		
+	return;
+}
+
+void MomPhoton(Float_t &pfx, Float_t &pfy, Float_t &pfz, Float_t pex, Float_t pey, Float_t pez, Float_t nu){
+
+	pfx = -pex;
+	pfy = -pey;
+	pfz = TMath::Sqrt(nu*nu-pfx*pfx-pfy*pfy);
 	
 	return;
 }
 
-void MomPhoton(Float_t &pfx, Float_t &pfy, Float_t &pfz, Float_t pex, Float_t pey, Float_t pez){
-	pfx = -pex;
-	pfy = -pey;
-	pfz = kEbeam - pez;
-	std::cout << "IN Momentum of Electron = " << TMath::Sqrt(pex*pex+pey*pey+pez*pez) << std::endl;
-	std::cout << "IN Momentum of Photon = " << TMath::Sqrt(pfx*pfx+pfy*pfy+pfz*pfz) << std::endl;
-	return;
+Float_t ThetaPQ(Float_t pfx, Float_t pfy, Float_t pfz, Float_t px, Float_t py, Float_t pz){
+	Float_t thetapq;
+    TVector3 Vpi(px,py,pz);
+    TVector3 Vvirt(pfx,pfy,pfz);
+    thetapq = Vvirt.Angle(Vpi)*180./(TMath::Pi());
+    
+    return thetapq;
+}
+
+Float_t PhiPQ(Float_t pfx, Float_t pfy, Float_t pfz, Float_t px, Float_t py, Float_t pz){
+	Float_t phipq;
+	TVector3 Vpi(px,py,pz);
+	TVector3 Vvirt(pfx,pfy,pfz);
+	Double_t phi_z = TMath::Pi()-Vvirt.Phi();
+    Vvirt.RotateZ(phi_z);
+    Vpi.RotateZ(phi_z);
+    TVector3 Vhelp(0.,0.,1.);
+    Double_t phi_y = Vvirt.Angle(Vhelp);
+    Vvirt.RotateY(phi_y);
+    Vpi.RotateY(phi_y);
+    phipq=Vpi.Phi() * 180./(TMath::Pi());	
+    
+    return phipq;
 }

@@ -17,13 +17,20 @@ Float_t kMassP = 0.938272;
 Float_t kMassPi = 0.139570;
 Float_t kEbeam = 5.0;
 
+void MomElectron(Float_t &pex, Float_t &pey, Float_t &pez, Float_t q2, Float_t nu, Float_t phie);
+void MomPhoton(Float_t &pfx, Float_t &pfy, Float_t &pfz, Float_t pex, Float_t pey, Float_t pez);
+
 int main(int argc,  char **argv){
-	// Arg 1 is the filename
 	rootfName = "part.root";
 	if(argc > 1)
 		fName = (TString) argv[1];
-	if(argc > 2)
+	else if(argc > 2)
 		Metal = (TString) argv[2];
+	else{
+		std::cout << "Please add the name of the input file" << std::endl;
+		std::cout << "./particlesToRoot input.file" << std::endl;
+		return 0;
+	}
 		
 	TFile *f = new TFile(rootfName, "RECREATE");
 	TNtuple *ntuple_elec;
@@ -72,6 +79,8 @@ int main(int argc,  char **argv){
 	Float_t *betta;
 	Float_t *plcm;
 	
+	Float_t pex, pey, pez;
+	Float_t pfx, pfy, pfz;
 			
 	while(!in.eof()){
 		in >> tLine;
@@ -98,8 +107,6 @@ int main(int argc,  char **argv){
 			for(Int_t i = 0; i < nParts; i++){
 				in >> partID[i] >> unused >> unused >> unused >> unused >> unused;
 				in >> px[i] >> py[i] >> pz[i] >> e[i] >> m[i] >> unused >> spin[i];
-				//std::cout << partID[i] << "\t" << px[i] << "\t" << py[i] << "\t" << pz[i];
-				//std::cout << "\t" << e[i] << "\t" << m[i] << "\t" << spin[i] << std::endl;
 			}
 			in >> tLine >> unused >> nu >> q2 >> eps >> phiL >> eventType;
 			xb = q2/(2*nu*kMassP);
@@ -108,10 +115,20 @@ int main(int argc,  char **argv){
 				p[i] = TMath::Sqrt(px[i]*px[i]+py[i]*py[i]+pz[i]*pz[i]);
 				w[i] = TMath::Sqrt(kMassP * kMassP + 2 * kMassP * nu - q2); // Check
 				plcm[i] = (nu + kMassP) * (TMath::Sqrt(1.) - TMath::Sqrt(q2 + nu * nu) * zh[i] * nu / (nu + kMassP)) / w[i];
+				MomElectron(pex, pey, pez, q2, nu, phiL);
+				Float_t petot;
+				petot = TMath::Sqrt(pex*pex+pey*pey+pez*pez);
+				std::cout << "Momentum Scattered Electron = " << petot << std::endl;
+				std::cout << "Energy of the photon = " << nu << std::endl;
+				MomPhoton(pfx, pfy, pfz, pex, pey, pez);
+				Float_t pftot;
+				pftot = TMath::Sqrt(pfx*pfx+pfy*pfy+pfz*pfz);
+				//std::cout << "Momentum Virtual Photon = " << pftot << std::endl;
+				//std::cout << "Sum of Momemtums = " << pftot + petot << std::endl;
 				theta[i] = 1.;
 				phi[i] = 1.;
 				zh[i] = e[i]/nu; // Check
-				//pt[i] = TMath::Sqrt(p[i]*p[i]*(1 - TMath::Cos(theta[i])*TMath::Cos(theta[i]))); // Check
+				pt[i] = TMath::Sqrt(p[i]*p[i]*(1 - TMath::Cos(theta[i])*TMath::Cos(theta[i]))); // Check
 				w2p[i] = 1.;
 				xf[i] = 1.;
 				t4[i] = 1.;
@@ -143,6 +160,29 @@ int main(int argc,  char **argv){
 	ntuple_elec->Write();
 	ntuple_part->Write();
 	
-	
 	return 0;
+}
+
+void MomElectron(Float_t &pex, Float_t &pey, Float_t &pez, Float_t q2, Float_t nu, Float_t phi){
+	Float_t costheta;
+	Float_t kEscat;
+	Float_t pexy;
+	
+	kEscat = kEbeam - nu;
+	costheta = (2*kEbeam*kEscat - q2)/(2*kEbeam*kEscat);
+	pez = (kEbeam - nu)*costheta;
+	pexy = (kEbeam - nu)*TMath::Sqrt(1 - costheta*costheta);
+	pex = pexy*TMath::Cos(phi);
+	pey = pexy*TMath::Sin(phi);
+	
+	return;
+}
+
+void MomPhoton(Float_t &pfx, Float_t &pfy, Float_t &pfz, Float_t pex, Float_t pey, Float_t pez){
+	pfx = -pex;
+	pfy = -pey;
+	pfz = kEbeam - pez;
+	std::cout << "IN Momentum of Electron = " << TMath::Sqrt(pex*pex+pey*pey+pez*pez) << std::endl;
+	std::cout << "IN Momentum of Photon = " << TMath::Sqrt(pfx*pfx+pfy*pfy+pfz*pfz) << std::endl;
+	return;
 }

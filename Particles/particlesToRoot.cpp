@@ -41,8 +41,8 @@ int main(int argc,  char **argv){
 	TNtuple *ntuple_elec;
 	TNtuple *ntuple_part;
 	
-	ntuple_elec = new TNtuple("gibuu_elec", "gibuu_elec", "TargType:Q2:Nu:Xb:Xf");
-	ntuple_part = new TNtuple("gibuu_parts", "gibuu_part", "PID:TargType:Q2:Nu:Xb:W:ThetaPQ:PhiPQ:Zh:Pt:Xf:P:T4:Betta");
+	ntuple_elec = new TNtuple("gibuu_elec", "gibuu_elec", "TargType:Q2:Nu:Xb:Xf:Weight");
+	ntuple_part = new TNtuple("gibuu_parts", "gibuu_part", "PID:TargType:Q2:Nu:Xb:W:ThetaPQ:PhiPQ:Zh:Pt:Xf:P:T4:Betta:Weight");
 		
 	ifstream in;
 	in.open(fName);
@@ -80,7 +80,6 @@ int main(int argc,  char **argv){
 	Float_t *w2p;
 	Float_t *xf;
 	Float_t *p;
-	Float_t *t4;
 	Float_t *betta;
 	Float_t *plcm;
 	
@@ -106,7 +105,6 @@ int main(int argc,  char **argv){
 			w2p = new Float_t[nParts];
 			xf = new Float_t[nParts];
 			p = new Float_t[nParts];
-			t4 = new Float_t[nParts];
 			betta = new Float_t[nParts];
 			plcm = new Float_t[nParts];
 			for(Int_t i = 0; i < nParts; i++){
@@ -127,7 +125,6 @@ int main(int argc,  char **argv){
 				zh[i] = e[i]/nu; // Check
 				pt[i] = TMath::Sqrt(p[i]*p[i]*(1 - TMath::Cos(theta[i])*TMath::Cos(theta[i]))); // Check
 				xf[i] = plcm[i]/PmaxCM(w[i]);
-				t4[i] = 1.;
 				betta[i] = TMath::Sqrt(p[i]*p[i]/(p[i]*p[i] + m[i]*m[i])) ; // Check
 			}
 			delete[] partID;
@@ -145,7 +142,6 @@ int main(int argc,  char **argv){
 			delete[] w2p;
 			delete[] xf;
 			delete[] p;
-			delete[] t4;
 			delete[] betta;
 		}
 	}

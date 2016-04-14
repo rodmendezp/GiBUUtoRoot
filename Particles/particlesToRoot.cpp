@@ -17,11 +17,13 @@ TString rootfName;
 Float_t kMassP = 0.938272;
 Float_t kMassPi = 0.139570;
 Float_t kEbeam = 5.0;
+Float_t kMntr = 0.939565;
 
 void MomElectron(Float_t &pex, Float_t &pey, Float_t &pez, Float_t q2, Float_t nu, Float_t phie);
 void MomPhoton(Float_t &pfx, Float_t &pfy, Float_t &pfz, Float_t pex, Float_t pey, Float_t pez, Float_t nu);
 Float_t ThetaPQ(Float_t pfx, Float_t pfy, Float_t pfz, Float_t px, Float_t py, Float_t pz);
 Float_t PhiPQ(Float_t pfx, Float_t pfy, Float_t pfz, Float_t px, Float_t py, Float_t pz);
+Float_t PmaxCM(Float_t W);
 
 int main(int argc,  char **argv){
 	rootfName = "part.root";
@@ -40,7 +42,7 @@ int main(int argc,  char **argv){
 	TNtuple *ntuple_part;
 	
 	ntuple_elec = new TNtuple("gibuu_elec", "gibuu_elec", "TargType:Q2:Nu:Xb:Xf");
-	ntuple_part = new TNtuple("gibuu_parts", "gibuu_part", "PID:TargType:Q2:Nu:Xb:W:ThetaPQ:PhiPQ:Zh:Pt:W2p:Xf:P:T4:Betta");
+	ntuple_part = new TNtuple("gibuu_parts", "gibuu_part", "PID:TargType:Q2:Nu:Xb:W:ThetaPQ:PhiPQ:Zh:Pt:Xf:P:T4:Betta");
 		
 	ifstream in;
 	in.open(fName);
@@ -124,8 +126,7 @@ int main(int argc,  char **argv){
 				phi[i] = PhiPQ(pfx,  pfy,  pfz,  p[i],  p[i],  p[i]);
 				zh[i] = e[i]/nu; // Check
 				pt[i] = TMath::Sqrt(p[i]*p[i]*(1 - TMath::Cos(theta[i])*TMath::Cos(theta[i]))); // Check
-				w2p[i] = 1.;
-				xf[i] = 1.;
+				xf[i] = plcm[i]/PmaxCM(w[i]);
 				t4[i] = 1.;
 				betta[i] = TMath::Sqrt(p[i]*p[i]/(p[i]*p[i] + m[i]*m[i])) ; // Check
 			}
@@ -203,4 +204,12 @@ Float_t PhiPQ(Float_t pfx, Float_t pfy, Float_t pfz, Float_t px, Float_t py, Flo
     phipq=Vpi.Phi() * 180./(TMath::Pi());	
     
     return phipq;
+}
+
+Float_t PmaxCM(Float_t W){
+	Float_t pmaxcm;
+	
+	pmaxcm = TMath::Sqrt(TMath::Power(W * W - kMntr * kMntr + kMassPi * kMassPi, 2) - 4. * kMassPi * kMassPi * W * W) / 2. / W;
+	
+	return pmaxcm;
 }

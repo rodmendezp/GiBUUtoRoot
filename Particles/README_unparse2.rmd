@@ -10,4 +10,19 @@ $$
 cos(\theta) = \frac{2 E_b E^{'} - Q^2}{2 E_b E^{'}}
 $$
 
+$$
+p_z^{'} = |p^{'}| cos(\theta_e) \\
+p_z^{'} = (E_b - \nu) cos(\theta_e)
+$$
 
+$$
+\sqrt(p_x^{'2} + p_y^{'2}) =  (E_b - \nu) sin(\theta_e) \\
+p_x^{'} = \sqrt(p_x^{'2} + p_y^{'2}) cos(\phi_e) \\
+p_y^{'} = \sqrt(p_x^{'2} + p_y^{'2}) sin(\phi_e)
+$$
+
+$$
+q_x = -p_x^{'} \\
+q_y = -p_y^{'} \\
+q_z = \sqrt(\nu^2 - q_x^2 - q_y^2)
+$$

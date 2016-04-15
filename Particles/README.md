@@ -2,6 +2,7 @@
 
 To get the output used in Analyser it is necessary to calculate a few more variables from the information that is printed in the output with Les-Houches format.  
 The variables from that are avaible are the following:  
+  
 Electron Variables: 
 <img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_11.png" alt="Equation Fail"height="15">
 , 

@@ -3,24 +3,24 @@
 To get the output used in Analyser it is necessary to calculate a few more variables from the information that is printed in the output with Les-Houches format.  
 The variables from that are avaible are the following:  
 Electron Variables: 
-<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_11.png" alt="Equation Fail"height="20">
+<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_11.png" alt="Equation Fail"height="15">
 , 
-<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_12.png" alt="Equation Fail"height="20">
+<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_12.png" alt="Equation Fail"height="15">
 , 
-<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_13.png" alt="Equation Fail"height="20">
+<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_13.png" alt="Equation Fail"height="15">
 
 Hadron Variables: 
-<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_14.png" alt="Equation Fail"height="20">
+<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_14.png" alt="Equation Fail"height="15">
 , 
-<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_15.png" alt="Equation Fail"height="20">
+<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_15.png" alt="Equation Fail"height="15">
 , 
-<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_16.png" alt="Equation Fail"height="20">
+<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_16.png" alt="Equation Fail"height="15">
 , 
-<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_17.png" alt="Equation Fail"height="20">
+<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_17.png" alt="Equation Fail"height="15">
 , 
-<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_18.png" alt="Equation Fail"height="20">
+<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_18.png" alt="Equation Fail"height="15">
 , 
-<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_19.png" alt="Equation Fail"height="20">
+<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_19.png" alt="Equation Fail"height="15">
 
 
 
@@ -28,11 +28,11 @@ Hadron Variables:
 
 
 Where 
-<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_20.png" alt="Equation Fail"height="20">
+<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_20.png" alt="Equation Fail"height="15">
  is the energy of the scattered electron.
 
 
-<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_02.png" alt="Equation Fail"height="20">
+<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_02.png" alt="Equation Fail"height="40">
 
 
 

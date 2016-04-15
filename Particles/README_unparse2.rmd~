@@ -2,7 +2,6 @@
 
 To get the output used in Analyser it is necessary to calculate a few more variables from the information that is printed in the output with Les-Houches format.  
 The variables from that are avaible are the following:  
-  
 Electron Variables: $Q^2$, $\nu$, $\phi_e$
 Hadron Variables: $p_x$, $p_y$, $p_z$, $E_h$, $M$, $spin$
 

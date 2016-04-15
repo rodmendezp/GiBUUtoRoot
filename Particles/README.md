@@ -5,11 +5,11 @@
 
 
 Where 
-<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_06.png" alt="Equation Fail"height="40">
+<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_06.png" alt="Equation Fail"height="20">
  is the energy of the scattered electron.
 
 
-<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_02.png" alt="Equation Fail"height="20">
+<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_02.png" alt="Equation Fail"height="40">
 
 
 

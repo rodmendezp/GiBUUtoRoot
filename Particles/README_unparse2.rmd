@@ -1,5 +1,10 @@
 # GiBUUtoROOT/Parcitles
 
+To get the output used in Analyser it is necessary to calculate a few more variables from the information that is printed in the output with Les-Houches format.  
+The variables from that are avaible are the following:  
+Electron Variables: $Q^2$, $\nu$, $\phi_e$
+Hadron Variables: $p_x$, $p_y$, $p_z$, $E_h$, $M$, $spin$
+
 $$
 Q^2 = 2 E_b E^{'} (1 - cos(\theta))
 $$
@@ -11,18 +16,33 @@ cos(\theta) = \frac{2 E_b E^{'} - Q^2}{2 E_b E^{'}}
 $$
 
 $$
-p_z^{'} = |p^{'}| cos(\theta_e) \\
+p_z^{'} = |p^{'}| cos(\theta_e)
+$$
+
+$$
 p_z^{'} = (E_b - \nu) cos(\theta_e)
 $$
 
 $$
-\sqrt(p_x^{'2} + p_y^{'2}) =  (E_b - \nu) sin(\theta_e) \\
-p_x^{'} = \sqrt(p_x^{'2} + p_y^{'2}) cos(\phi_e) \\
+\sqrt(p_x^{'2} + p_y^{'2}) = (E_b - \nu) sin(\theta_e)
+$$
+
+$$
+p_x^{'} = \sqrt(p_x^{'2} + p_y^{'2}) cos(\phi_e)
+$$
+ 
+$$
 p_y^{'} = \sqrt(p_x^{'2} + p_y^{'2}) sin(\phi_e)
 $$
 
 $$
-q_x = -p_x^{'} \\
-q_y = -p_y^{'} \\
+q_x = -p_x^{'}
+$$
+
+$$
+q_y = -p_y^{'}
+$$
+
+$$
 q_z = \sqrt(\nu^2 - q_x^2 - q_y^2)
 $$

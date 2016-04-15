@@ -1,27 +1,27 @@
 # GiBUUtoROOT/Parcitles
 
-To get the output used in Analyser it is necessary to calculate a few more variables from the information that is printed in the output with Les-Houches format.  
-The variables from that are avaible are the following:  
+To get the output used in Analyser it is necessary to calculate a few more variables from the information that is printed out in the output with Les-Houches format.  
+The variables that are avaible are the following:  
   
 Electron Variables: 
-<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_11.png" alt="Equation Fail"height="15">
+<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_14.png" alt="Equation Fail"height="20">
 , 
-<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_12.png" alt="Equation Fail"height="15">
+<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_15.png" alt="Equation Fail"height="20">
 , 
-<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_13.png" alt="Equation Fail"height="15">
+<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_16.png" alt="Equation Fail"height="20">
 
 Hadron Variables: 
-<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_14.png" alt="Equation Fail"height="15">
+<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_17.png" alt="Equation Fail"height="20">
 , 
-<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_15.png" alt="Equation Fail"height="15">
+<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_18.png" alt="Equation Fail"height="20">
 , 
-<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_16.png" alt="Equation Fail"height="15">
+<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_19.png" alt="Equation Fail"height="20">
 , 
-<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_17.png" alt="Equation Fail"height="15">
+<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_20.png" alt="Equation Fail"height="20">
 , 
-<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_18.png" alt="Equation Fail"height="15">
+<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_21.png" alt="Equation Fail"height="20">
 , 
-<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_19.png" alt="Equation Fail"height="15">
+<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_22.png" alt="Equation Fail"height="20">
 
 
 
@@ -29,11 +29,11 @@ Hadron Variables:
 
 
 Where 
-<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_20.png" alt="Equation Fail"height="15">
+<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_23.png" alt="Equation Fail"height="20">
  is the energy of the scattered electron.
 
 
-<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_02.png" alt="Equation Fail"height="40">
+<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_02.png" alt="Equation Fail"height="20">
 
 
 
@@ -66,4 +66,17 @@ Where
 
 
 <img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_10.png" alt="Equation Fail"height="20">
+
+
+
+<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_11.png" alt="Equation Fail"height="20">
+
+
+
+<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_12.png" alt="Equation Fail"height="20">
+
+
+
+
+<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_13.png" alt="Equation Fail"height="20">
 

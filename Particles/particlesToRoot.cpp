@@ -19,6 +19,8 @@ Float_t kMassPi = 0.139570;
 Float_t kEbeam = 5.0;
 Float_t kMntr = 0.939565;
 
+Int_t TargType = 1;
+
 void MomElectron(Float_t &pex, Float_t &pey, Float_t &pez, Float_t q2, Float_t nu, Float_t phie);
 void MomPhoton(Float_t &pfx, Float_t &pfy, Float_t &pfz, Float_t pex, Float_t pey, Float_t pez, Float_t nu);
 Float_t ThetaPQ(Float_t pfx, Float_t pfy, Float_t pfz, Float_t px, Float_t py, Float_t pz);
@@ -27,10 +29,19 @@ Float_t PmaxCM(Float_t W, Float_t Mh);
 
 int main(int argc,  char **argv){
 	rootfName = "part.root";
-	if(argc > 1)
+	if(argc == 2)
 		fName = (TString) argv[1];
-	else if(argc > 2)
+	else if(argc == 3)
 		Metal = (TString) argv[2];
+	else if(argc == 4){
+		if((Int_t) std::stoi(argv[3]) != 1 || (Int_t) std::stoi(argv[3]) != 2){
+			std::cout << "TargType must be 1 (liquid) or 2 (solid)" << std::cout;
+			return 0;
+		}	
+		else{
+			TargType = (Int_t) std::stoi(argv[3]);
+		}
+	}
 	else{
 		std::cout << "Please add the name of the input file" << std::endl;
 		std::cout << "./particlesToRoot input.file" << std::endl;
@@ -41,7 +52,7 @@ int main(int argc,  char **argv){
 	TNtuple *ntuple_elec;
 	TNtuple *ntuple_part;
 	
-	ntuple_elec = new TNtuple("gibuu_elec", "gibuu_elec", "TargType:Q2:Nu:Xb:Xf:Weight");
+	ntuple_elec = new TNtuple("gibuu_elec", "gibuu_elec", "TargType:Q2:Nu:Xb:Weight");
 	ntuple_part = new TNtuple("gibuu_parts", "gibuu_part", "PID:TargType:Q2:Nu:Xb:W:ThetaPQ:PhiPQ:Zh:Pt:Xf:P:Betta:Weight");
 		
 	ifstream in;
@@ -114,7 +125,7 @@ int main(int argc,  char **argv){
 			}
 			in >> tLine >> unused >> nu >> q2 >> eps >> phiL >> eventType;
 			xb = q2/(2*nu*kMassP);
-			ntuple_elec->Fill(1, q2, nu, xb, weight);
+			ntuple_elec->Fill((Float_t) TargType, q2, nu, xb, weight);
 			for(Int_t i = 0; i < nParts; i++){
 				p[i] = TMath::Sqrt(px[i]*px[i]+py[i]*py[i]+pz[i]*pz[i]);
 				w[i] = TMath::Sqrt(kMassP * kMassP + 2 * kMassP * nu - q2); // Check
@@ -128,7 +139,7 @@ int main(int argc,  char **argv){
 				pt[i] = TMath::Sqrt(p[i]*p[i]*(1 - TMath::Cos(theta[i])*TMath::Cos(theta[i]))); // Check
 				xf[i] = plcm[i]/PmaxCM(w[i], m[i]);
 				betta[i] = TMath::Sqrt(p[i]*p[i]/(p[i]*p[i] + m[i]*m[i])) ; // Check
-				ntuple_hadron->Fill(partID[i], 1, q2, nu, xb, w[i], theta[i], phi[i], zh[i], pt[i], xf[i], p[i], betta[i], weight[i]);
+				ntuple_part->Fill(partID[i], TargType, q2, nu, xb, w[i], theta[i], phi[i], zh[i], pt[i], xf[i], p[i], betta[i], weight);
 			}
 			delete[] partID;
 			delete[] px;

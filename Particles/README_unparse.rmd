@@ -4,7 +4,7 @@ To get the output used in Analyser it is necessary to calculate a few more varia
 The variables that are avaible are the following:  
   
 Electron Variables: $Q^2$, $\nu$, $\phi_e$
-Hadron Variables: $p_x$, $p_y$, $p_z$, $E_h$, $M$, $spin$
+Hadron Variables: $p_x$, $p_y$, $p_z$, $E_h$, $M$
   
 The variables that need to be calculated are:  
   
@@ -15,7 +15,7 @@ $$
 x_b = \frac{Q^2}{2 \nu M_p}
 $$
 
-In order to get $\theta_h$ and $phi_h$ it is necessary to calculate the momentum of the photon
+In order to get $\theta_h$ and $\phi_h$ it is necessary to calculate the momentum of the photon
 
 $$
 Q^2 = 2 E_b E^{'} (1 - cos(\theta))
@@ -58,6 +58,9 @@ $$
 $$
 q_z = \sqrt{\nu^2 - q_x^2 - q_y^2}
 $$
+
+Once the momentum of the photon is known it is possible to calculate $\theta_h$ and $\phi_h$, where $\phi_h$ is the 
+azimuthal angle of the hadron in respect to the photon.
 
 $$
 z_h = \frac{E_h}{\nu}

@@ -4,9 +4,9 @@ To get the output used in Analyser it is necessary to calculate a few more varia
 The variables that are avaible are the following:  
   
 Electron Variables: 
-<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_19.png" alt="Equation Fail"height="15">
+<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_19.png" alt="Equation Fail"height="20">
 , 
-<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_20.png" alt="Equation Fail"height="15">
+<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_20.png" alt="Equation Fail"height="10">
 , 
 <img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_21.png" alt="Equation Fail"height="20">
 
@@ -25,18 +25,18 @@ Hadron Variables:
 The variables that need to be calculated are:  
   
 Electron Variables: 
-<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_27.png" alt="Equation Fail"height="20">
+<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_27.png" alt="Equation Fail"height="15">
 
 Hadron Variables: 
 <img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_28.png" alt="Equation Fail"height="20">
 , 
-<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_29.png" alt="Equation Fail"height="15">
+<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_29.png" alt="Equation Fail"height="20">
 , 
 <img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_30.png" alt="Equation Fail"height="15">
 , 
 <img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_31.png" alt="Equation Fail"height="15">
 , 
-<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_32.png" alt="Equation Fail"height="15">
+<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_32.png" alt="Equation Fail"height="20">
 , 
 <img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_33.png" alt="Equation Fail"height="15">
 , 
@@ -44,7 +44,7 @@ Hadron Variables:
 
 
 
-<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_01.png" alt="Equation Fail"height="40">
+<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_01.png" alt="Equation Fail"height="45">
 
 
 In order to get 
@@ -54,7 +54,7 @@ In order to get
  it is necessary to calculate the momentum of the photon
 
 
-<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_02.png" alt="Equation Fail"height="30">
+<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_02.png" alt="Equation Fail"height="25">
 
 
 Where 
@@ -62,7 +62,7 @@ Where
  is the energy of the scattered electron.
 
 
-<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_03.png" alt="Equation Fail"height="40">
+<img src="https://github.com/rodmendezp/GiBUUtoRoot/blob/master/Particles/READMEpng/eq_no_03.png" alt="Equation Fail"height="45">
 
 
 

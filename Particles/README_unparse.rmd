@@ -5,6 +5,17 @@ The variables that are avaible are the following:
   
 Electron Variables: $Q^2$, $\nu$, $\phi_e$
 Hadron Variables: $p_x$, $p_y$, $p_z$, $E_h$, $M$, $spin$
+  
+The variables that need to be calculated are:  
+  
+Electron Variables: $X_b$
+Hadron Variables: $\theta_h$, $\phi_h$, $z_h$, $x_f$, $\beta$, $W$, $p_t$
+
+$$
+x_b = \frac{Q^2}{2 \nu M_p}
+$$
+
+In order to get $\theta_h$ and $phi_h$ it is necessary to calculate the momentum of the photon
 
 $$
 Q^2 = 2 E_b E^{'} (1 - cos(\theta))
@@ -53,10 +64,25 @@ z_h = \frac{E_h}{\nu}
 $$
 
 $$
-p_{l_cm} = (\nu + M_p)(\sqrt{p_l^2} - \frac{\sqrt{Q^2 + \nu^2} z_h \nu}{\nu + M_p})(\frac{1}{W})
+W = \sqrt{M_p^2 + 2 M_p  \nu - Q^2}
 $$
 
+$$
+p_{l_{cm}} = (\nu + M_p)(\sqrt{p_l^2} - \frac{\sqrt{Q^2 + \nu^2} z_h \nu}{\nu + M_p})(\frac{1}{W})
+$$
+
+$$
+p_{l_{max}} = \sqrt{(W^2 - M_n^2 + M_h^2)^2 - 4 M_h^2 W^2} \frac{1}{2 W}
+$$
+
+$$
+x_f = \frac{p_{l_{cm}}}{p_{l_{max}}}
+$$
 
 $$
 p_t = \sqrt{p_h^2 (1 - cos^2(\theta_{pq}))}
+$$
+
+$$
+\beta = \sqrt{\frac{p^2}{p^2 + M_h^2}}
 $$

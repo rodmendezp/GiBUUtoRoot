@@ -23,7 +23,7 @@ void MomElectron(Float_t &pex, Float_t &pey, Float_t &pez, Float_t q2, Float_t n
 void MomPhoton(Float_t &pfx, Float_t &pfy, Float_t &pfz, Float_t pex, Float_t pey, Float_t pez, Float_t nu);
 Float_t ThetaPQ(Float_t pfx, Float_t pfy, Float_t pfz, Float_t px, Float_t py, Float_t pz);
 Float_t PhiPQ(Float_t pfx, Float_t pfy, Float_t pfz, Float_t px, Float_t py, Float_t pz);
-Float_t PmaxCM(Float_t W);
+Float_t PmaxCM(Float_t W, Float_t Mh);
 
 int main(int argc,  char **argv){
 	rootfName = "part.root";
@@ -42,7 +42,7 @@ int main(int argc,  char **argv){
 	TNtuple *ntuple_part;
 	
 	ntuple_elec = new TNtuple("gibuu_elec", "gibuu_elec", "TargType:Q2:Nu:Xb:Xf:Weight");
-	ntuple_part = new TNtuple("gibuu_parts", "gibuu_part", "PID:TargType:Q2:Nu:Xb:W:ThetaPQ:PhiPQ:Zh:Pt:Xf:P:T4:Betta:Weight");
+	ntuple_part = new TNtuple("gibuu_parts", "gibuu_part", "PID:TargType:Q2:Nu:Xb:W:ThetaPQ:PhiPQ:Zh:Pt:Xf:P:Betta:Weight");
 		
 	ifstream in;
 	in.open(fName);
@@ -85,6 +85,7 @@ int main(int argc,  char **argv){
 	
 	Float_t pex, pey, pez;
 	Float_t pfx, pfy, pfz;
+	Float_t pl2;
 			
 	while(!in.eof()){
 		in >> tLine;
@@ -117,15 +118,17 @@ int main(int argc,  char **argv){
 			for(Int_t i = 0; i < nParts; i++){
 				p[i] = TMath::Sqrt(px[i]*px[i]+py[i]*py[i]+pz[i]*pz[i]);
 				w[i] = TMath::Sqrt(kMassP * kMassP + 2 * kMassP * nu - q2); // Check
-				plcm[i] = (nu + kMassP) * (TMath::Sqrt(1.) - TMath::Sqrt(q2 + nu * nu) * zh[i] * nu / (nu + kMassP)) / w[i];
+				zh[i] = e[i]/nu; // Check
 				MomElectron(pex, pey, pez, q2, nu, phiL);
 				MomPhoton(pfx, pfy, pfz, pex, pey, pez, nu);
 				theta[i] = ThetaPQ(pfx,  pfy,  pfz,  p[i],  p[i],  p[i]);
-				phi[i] = PhiPQ(pfx,  pfy,  pfz,  p[i],  p[i],  p[i]);
-				zh[i] = e[i]/nu; // Check
+				phi[i] = PhiPQ(pfx,  pfy,  pfz,  p[i],  p[i],  p[i]);				
+				pl2 = p[i]*p[i]*TMath::Cos(theta[i])*TMath::Cos(theta[i]);
+				plcm[i] = (nu + kMassP) * (TMath::Sqrt(pl2) - TMath::Sqrt(q2 + nu * nu) * zh[i] * nu / (nu + kMassP)) / w[i];
 				pt[i] = TMath::Sqrt(p[i]*p[i]*(1 - TMath::Cos(theta[i])*TMath::Cos(theta[i]))); // Check
-				xf[i] = plcm[i]/PmaxCM(w[i]);
+				xf[i] = plcm[i]/PmaxCM(w[i], m[i]);
 				betta[i] = TMath::Sqrt(p[i]*p[i]/(p[i]*p[i] + m[i]*m[i])) ; // Check
+				ntuple_hadron->Fill(partID[i], 1, q2, nu, xb, w[i], theta[i], phi[i], zh[i], pt[i], xf[i], p[i], betta[i], weight[i]);
 			}
 			delete[] partID;
 			delete[] px;
@@ -202,10 +205,10 @@ Float_t PhiPQ(Float_t pfx, Float_t pfy, Float_t pfz, Float_t px, Float_t py, Flo
     return phipq;
 }
 
-Float_t PmaxCM(Float_t W){
+Float_t PmaxCM(Float_t W, Float_t Mh){
 	Float_t pmaxcm;
 	
-	pmaxcm = TMath::Sqrt(TMath::Power(W * W - kMntr * kMntr + kMassPi * kMassPi, 2) - 4. * kMassPi * kMassPi * W * W) / 2. / W;
+	pmaxcm = TMath::Sqrt(TMath::Power(W * W - kMntr * kMntr + Mh * Mh, 2) - 4. * Mh * Mh * W * W) / 2. / W;
 	
 	return pmaxcm;
 }
